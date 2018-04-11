@@ -1,2 +1,65 @@
+@media all and (max-width: 25.375em) {
+	.filter-options select {
+		width: 10.5em;
+		padding: 0 .25em;
+	}
+}
 
-/*# sourceMappingURL=media-queries.css.map */
+@media all and (max-width: 56.250em) {
+  #maincontent {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .inside #map-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    top: 130px;
+    padding-top: 0;
+  }
+
+  .inside #breadcrumb {
+    width: 100%;
+  }
+
+  #restaurant-content, #reviews {
+    width: 100%;
+  }
+
+  #restaurant-container, #reviews-container {
+     padding: 140px 25px 30px;
+  }
+
+  #reviews-container {
+    padding: 30px 25px 110px;
+  }
+
+  .inside #footer {
+    width: 100%;
+  }
+
+}
+
+@media all and (min-width: 56.313em) {
+	.inside #footer {
+		width: 45%;
+		padding: 1.2em;
+	}
+
+	#breadcrumb li a {
+		font-size: 1.8em;
+	}
+
+	.filter-options h2 {
+		font-size: 3em;
+	}
+
+	.filter-options select {
+		width: 15.5em;
+		padding: 0 .7em;
+		font-size: 1.6em;
+	}
+
+
+}
