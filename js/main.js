@@ -1,8 +1,24 @@
 let restaurants,
   neighborhoods,
-  cuisines
-var map
-var markers = []
+  cuisines;
+var map;
+var markers = [];
+
+(function() {
+  if (!('serviceWorker' in navigator)) {
+  console.log('Service Worker not supported')
+  return;
+  }
+
+  navigator.serviceWorker.register('/sw.js')
+  .then(function() {
+    console.log('Service Worker Registered');
+  })
+  .catch(function(error){
+    console.log('Registration failed: ', error)
+  });
+ })();
+
 
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
@@ -125,9 +141,11 @@ resetRestaurants = (restaurants) => {
  * Create all restaurants HTML and add them to the webpage.
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
+  let tabindex = 3;
   const ul = document.getElementById('restaurants-list');
   restaurants.forEach(restaurant => {
-    ul.append(createRestaurantHTML(restaurant));
+    ul.append(createRestaurantHTML(restaurant, tabIndex));
+    tabIndex ++;
   });
   addMarkersToMap();
 }
@@ -135,15 +153,16 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 /**
  * Create restaurant HTML.
  */
-createRestaurantHTML = (restaurant) => {
+createRestaurantHTML = (restaurant, tabIndex) => {
   const li = document.createElement('li');
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
+  image.alt = restaurant.alt_text;
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
 
-  const name = document.createElement('h1');
+  const name = document.createElement('h2');
   name.innerHTML = restaurant.name;
   li.append(name);
 
@@ -156,7 +175,9 @@ createRestaurantHTML = (restaurant) => {
   li.append(address);
 
   const more = document.createElement('a');
+  more.setAttribute('tabindex', tabindex.toString());
   more.innerHTML = 'View Details';
+  more.setAttribute('aria-label', "view details for" + restaurant.name);
   more.href = DBHelper.urlForRestaurant(restaurant);
   li.append(more)
 
