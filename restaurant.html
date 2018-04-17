@@ -4,12 +4,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Normalize.css for better cross-browser consistency -->
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
   <!-- Main CSS file -->
   <link rel="stylesheet" href="css/styles.css" type="text/css">
-  <link rel="stylesheet" type="text/css" href="css/media-queries.css">
+  <link rel="stylesheet"  href="css/media-queries.css">
   <title>Restaurant Info</title>
 </head>
 
@@ -17,13 +18,15 @@
   <!-- Beginning header -->
   <header>
     <!-- Beginning nav -->
-    <nav>
-      <h1><a href="/">Restaurant Reviews</a></h1>
+    <nav id="nav">
+      <h1><a href="/" tabindex="-1">Restaurant Reviews</a></h1>
     </nav>
     <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" >
-      <li><a href="/">Home</a></li>
-    </ul>
+     <nav role='Breadcrumb' id="breadcrumb-nav">
+      <ul id="breadcrumb" >
+        <li><a href="/" tabindex="1">Home</a></li>
+      </ul>
+    </nav>  
     <!-- End breadcrumb -->
     <!-- End nav -->
   </header>
@@ -32,22 +35,26 @@
   <!-- Beginning main -->
   <main id="maincontent">
     <!-- Beginning map -->
-    <section id="map-container">
-      <div id="map"></div>
+    <section id="map-container" aria-label="Area Map">
+      <div id="map" role="application" aria-hidden="true"></div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
     <section id="restaurant-container">
-      <h1 id="restaurant-name"></h1>
-      <img id="restaurant-img">
-      <p id="restaurant-cuisine"></p>
-      <p id="restaurant-address"></p>
-      <table id="restaurant-hours"></table>
+      <div id="restaurant-container">
+        <h1 id="restaurant-name"></h1>
+        <img id="restaurant-img">
+        <p id="restaurant-cuisine"></p>
+        <p id="restaurant-address"></p>
+        <table id="restaurant-hours"></table>
+      </div>
     </section>
     <!-- end restaurant -->
     <!-- Beginning reviews -->
-    <section id="reviews-container">
-      <ul id="reviews-list"></ul>
+    <section id="reviews">
+      <div id="reviews-container">
+        <ul id="reviews-list"></ul>
+      </div>
     </section>
     <!-- End reviews -->
   </main>
@@ -61,13 +68,12 @@
 
   <!-- Beginning scripts -->
   <!-- Database helpers -->
-  <script type="text/javascript" src="js/dbhelper.js"></script>
+  <script src="js/dbhelper.js"></script>
   <!-- Main javascript file -->
-  <script type="text/javascript" src="js/restaurant_info.js"></script>
+  <script src="js/restaurant_info.js"></script>
   <!-- Google Maps -->
   <script async defer src="https://maps.googleapis.com/maps/api/ +
-  js?key=AIzaSyBLuWKfIyroskFcKO6kFlOgnTsobIKU0Rw +
-  &libraries=places&callback=initMap"></script>
+  js?key=AIzaSyBLuWKfIyroskFcKO6kFlOgnTsobIKU0Rw&callback=initMap"></script>
   <!-- End scripts -->
 
 </body>
