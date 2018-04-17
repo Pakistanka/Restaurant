@@ -14,6 +14,12 @@ window.initMap = () => {
         center: restaurant.latlng,
         scrollwheel: false
       });
+
+      google.maps.event.addListener(self.map, "tilesloaded", function(){
+        [].slice.apply(document.querySelectorAll('#map a,button')).forEach(function(item) {
+          item.setAttribute('tabindex', '-1');
+        });
+      });
       fillBreadcrumb();
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
     }
@@ -56,7 +62,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   address.innerHTML = restaurant.address;
 
   const image = document.getElementById('restaurant-img');
-  image.className = 'restaurant-img'
+  image.className = 'restaurant-img';
+  image.alt = restaurant.alt_text;
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');
@@ -94,8 +101,9 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
  * Create all reviews HTML and add them to the webpage.
  */
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
+  let tabindex = 2;
   const container = document.getElementById('reviews-container');
-  const title = document.createElement('h2');
+  const title = document.createElement('h3');
   title.innerHTML = 'Reviews';
   container.appendChild(title);
 
@@ -107,7 +115,8 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   }
   const ul = document.getElementById('reviews-list');
   reviews.forEach(review => {
-    ul.appendChild(createReviewHTML(review));
+    ul.appendChild(createReviewHTML(review, tabIndex));
+    tabIndex ++;
   });
   container.appendChild(ul);
 }
@@ -117,6 +126,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review) => {
   const li = document.createElement('li');
+  li.setAttribute('tabindex', tabIndex.toString());
   const name = document.createElement('p');
   name.innerHTML = review.name;
   li.appendChild(name);
