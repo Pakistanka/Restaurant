@@ -26,6 +26,7 @@
   #restaurant-content, #reviews {
     width: 100%;
   }
+  
 
   #restaurant-container, #reviews-container {
      padding: 140px 25px 30px;
@@ -37,6 +38,10 @@
 
   .inside #footer {
     width: 100%;
+  }
+
+  #restaurant-img {
+    width: 75%;
   }
 
 }
@@ -60,6 +65,4 @@
 		padding: 0 .7em;
 		font-size: 1.6em;
 	}
-
-
 }
