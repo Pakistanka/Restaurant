@@ -1,4 +1,4 @@
-let restaurants,
+llet restauraninstallts,
   neighborhoods,
   cuisines;
 var map;
@@ -96,6 +96,7 @@ window.initMap = () => {
     center: loc,
     scrollwheel: false
   });
+
   updateRestaurants();
 }
 
@@ -141,7 +142,7 @@ resetRestaurants = (restaurants) => {
  * Create all restaurants HTML and add them to the webpage.
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
-  let tabindex = 3;
+  let  tabIndex = 3;
   const ul = document.getElementById('restaurants-list');
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant, tabIndex));
@@ -158,7 +159,7 @@ createRestaurantHTML = (restaurant, tabIndex) => {
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
-  image.alt = restaurant.alt_text;
+  image.alt=restaurant.alt_text;
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
 
@@ -175,7 +176,7 @@ createRestaurantHTML = (restaurant, tabIndex) => {
   li.append(address);
 
   const more = document.createElement('a');
-  more.setAttribute('tabindex', tabindex.toString());
+  more.setAttribute('tabindex', tabIndex.toString());
   more.innerHTML = 'View Details';
   more.setAttribute('aria-label', "view details for" + restaurant.name);
   more.href = DBHelper.urlForRestaurant(restaurant);
