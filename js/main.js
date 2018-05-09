@@ -1,4 +1,4 @@
-llet restauraninstallts,
+let restauraninstallts,
   neighborhoods,
   cuisines;
 var map;
