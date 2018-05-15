@@ -253,7 +253,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
   padding: 140px 40px 30px;
-  width: 50%;
+  /*width: 50%;*/
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -317,10 +317,6 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 
   #restaurant-content, #reviews {
     width: 100%;
-  }
-
-  #restaurant-container, #reviews-container {
-     padding: 140px 25px 30px;
   }
 
   #reviews-container {
