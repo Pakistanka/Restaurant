@@ -1,8 +1,19 @@
-@media all and (max-width: 25.375em) {
+@media all and (max-width: 26em) {
 	.filter-options select {
 		width: 10.5em;
 		padding: 0 .25em;
 	}
+
+  #restaurant-container, 
+  #reviews-container {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+
+
 }
 
 @media all and (max-width: 56.250em) {
@@ -65,4 +76,10 @@
 		padding: 0 .7em;
 		font-size: 1.6em;
 	}
+
+  #restaurant-container, 
+  #reviews-container {
+    max-width: 49%;
+    margin: 0;
+  }
 }
