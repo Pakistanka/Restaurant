@@ -43,6 +43,7 @@ self.addEventListener('activate', function(event) {
         cacheNames.map(function(cacheName) {
           //delete outdated caches
           if (cacheWhitelist.indexOf(cacheName) === -1) {
+            console.log('Removed ', cacheName, ' from cache');
             return caches.delete(cacheName);
           }
         })
@@ -50,17 +51,29 @@ self.addEventListener('activate', function(event) {
     })
   );
 });
-// intercept requests for  files from the network and respond with the files from the cache.
+// intercept requests for files from the network and respond with the files from the cache.
 self.addEventListener('fetch', function(event) {
-  console.log('Fetch event for ', event.request.url);
   event.respondWith(
     caches.match(event.request).then(function(response) {
       if (response) {
         console.log('Found ', event.request.url, ' in cache');
         return response;
       }
-      console.log('Network request for ', event.request.url);
-      return fetch(event.request);
+      
+      if ( event.request.url.indexOf('https://maps.g') == 0 ) {
+        console.log('Fetching gmaps ', event.request.url);
+        return caches.open(staticCacheName).then(cache => {
+          return fetch(event.request).then(response => {
+            // Put a copy of the response in the cache.
+            return cache.put(event.request, response.clone()).then(() => {
+              return response;
+            });
+          });
+        });
+      } else {
+        console.log('Network request for ', event.request.url);
+        return fetch(event.request);
+      }
     })
   );
 });
