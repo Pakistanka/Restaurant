@@ -252,12 +252,10 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 140px 40px 30px;
-  /*width: 50%;*/
+  padding: 2em .75em .5em;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-
 }
 
 #reviews, #restaurant-content{
@@ -293,38 +291,4 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 #restaurant-hours td {
   color: #666;
-}
-
-
-@media all and (max-width: 900px) {
-  #maincontent {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .inside #map-container {
-    position: relative;
-    height: 300px;
-    width: 100%;
-    top: 130px;
-    padding-top: 0;
-
-  }
-
-  .inside #breadcrumb {
-    width: 100%;
-  }
-
-  #restaurant-content, #reviews {
-    width: 100%;
-  }
-
-  #reviews-container {
-    padding: 30px 25px 110px;
-  }
-
-  .inside #footer {
-    width: 100%;
-  }
-
 }
