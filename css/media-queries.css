@@ -1,4 +1,5 @@
 @media all and (max-width: 26em) {
+
 	.filter-options select {
 		width: 10.5em;
 		padding: 0 .25em;
@@ -6,17 +7,19 @@
 
   #restaurant-container, 
   #reviews-container {
-    width: 95%;
+    width: 90%;
     display: flex;
     flex-direction: column;
   }
 
-
-
+  #restaurant-content, #reviews {
+    width: 100%;
+  }
 
 }
 
 @media all and (max-width: 56.250em) {
+  
   #maincontent {
     display: flex;
     flex-direction: column;
@@ -39,8 +42,9 @@
   }
   
 
-  #restaurant-container, #reviews-container {
-     padding: 140px 25px 30px;
+  #restaurant-container, 
+  #reviews-container {
+    padding: 1.5em .75em .5em;
   }
 
   #reviews-container {
@@ -50,14 +54,10 @@
   .inside #footer {
     width: 100%;
   }
-
-  #restaurant-img {
-    width: 75%;
-  }
-
 }
 
 @media all and (min-width: 56.313em) {
+
 	.inside #footer {
 		width: 45%;
 		padding: 1.2em;
@@ -79,7 +79,7 @@
 
   #restaurant-container, 
   #reviews-container {
-    max-width: 49%;
     margin: 0;
   }
+
 }
